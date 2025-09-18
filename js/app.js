@@ -191,3 +191,24 @@ document.getElementById('login-form').addEventListener('submit', function(e){
       showToast(err.message, false);
     });
 });
+
+
+
+// Login (button-based, no auto form reload)
+document.getElementById('loginBtn').addEventListener('click', function(e){
+  e.preventDefault();
+  const email = document.getElementById('login-email').value.trim();
+  const pw = document.getElementById('login-password').value.trim();
+  if(!isValidEmail(email)){ showToast("Enter valid email", false); return; }
+  if(pw.length < 6){ showToast("Password too short", false); return; }
+
+  getAuth().signInWithEmailAndPassword(email, pw)
+    .then(userCredential => {
+      showToast("Login successful!", true);
+      setTimeout(()=> window.location.href = "home.html", 1000);
+    })
+    .catch(err => {
+      console.error(err);
+      showToast(err.message, false);
+    });
+});
