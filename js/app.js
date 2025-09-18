@@ -170,3 +170,24 @@ function openResumeIfAuth(){ openModalIfAuth('modal-resume'); } function openPro
 document.addEventListener('click', function(e){
   if(e.target && e.target.id==='download-resume'){ const a=document.createElement('a'); a.href='assets/Utkarsh_Modern_Resume.pdf'; a.download='Utkarsh_Modern_Resume.pdf'; document.body.appendChild(a); a.click(); a.remove(); }
 });
+
+
+
+// Login (form-based)
+document.getElementById('login-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  const email = document.getElementById('login-email').value.trim();
+  const pw = document.getElementById('login-password').value.trim();
+  if(!isValidEmail(email)){ showToast("Enter valid email", false); return; }
+  if(pw.length < 6){ showToast("Password too short", false); return; }
+
+  getAuth().signInWithEmailAndPassword(email, pw)
+    .then(userCredential => {
+      showToast("Login successful!", true);
+      setTimeout(()=> window.location.href = "home.html", 1000);
+    })
+    .catch(err => {
+      console.error(err);
+      showToast(err.message, false);
+    });
+});
