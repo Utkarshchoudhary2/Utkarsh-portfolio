@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - Portfolio</title>
-  <script type="module" src="login.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="auth.js" defer></script>
 </head>
 <body>
-  <h2>Login</h2>
-  <input type="email" id="login-email" placeholder="Email" required />
-  <input type="password" id="login-password" placeholder="Password" required />
-  <button id="loginBtn" type="button">Login</button>
-  <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+  <div id="particles-js"></div>
+  <div class="auth-container">
+    <div class="tabs">
+      <button id="loginTab" class="active">Login</button>
+      <button id="signupTab">Sign Up</button>
+    </div>
+    <div id="loginForm" class="form active">
+      <input type="email" id="login-email" placeholder="Email">
+      <input type="password" id="login-password" placeholder="Password">
+      <button id="loginBtn">Login</button>
+      <p id="loginError" class="error"></p>
+    </div>
+    <div id="signupForm" class="form">
+      <input type="text" id="fullname" placeholder="Username">
+      <input type="email" id="signup-email" placeholder="Email">
+      <input type="password" id="signup-password" placeholder="Password">
+      <input type="password" id="signup-confirm" placeholder="Confirm Password">
+      <button id="signupBtn">Sign Up</button>
+      <p id="signupError" class="error"></p>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS.load('particles-js', 'particles.json', function() {
+      console.log('Particles loaded');
+    });
+  </script>
 </body>
 </html>

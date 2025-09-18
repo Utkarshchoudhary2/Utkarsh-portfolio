@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
   <script type="module">
     import { app } from "./firebase-config.js";
     import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
     const auth = getAuth(app);
-
     document.addEventListener('DOMContentLoaded', () => {
-      const logoutBtn = document.getElementById('logoutBtn');
-      logoutBtn.addEventListener('click', () => {
-        signOut(auth).then(() => {
-          alert("Logged out!");
-          window.location.href = "index.html";
-        });
-      });
-
+      const userNameEl = document.getElementById('username');
       onAuthStateChanged(auth, (user) => {
-        if (!user) {
+        if (user && user.displayName) {
+          userNameEl.textContent = "Welcome, " + user.displayName + " 👋";
+        } else if (user) {
+          userNameEl.textContent = "Welcome 👋";
+        } else {
           window.location.href = "index.html";
         }
+      });
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        signOut(auth).then(() => window.location.href = "index.html");
+      });
+      document.getElementById('menuToggle').addEventListener('click', () => {
+        document.querySelector('.sidebar').classList.toggle('expanded');
       });
     });
   </script>
 </head>
 <body>
-  <h2>Welcome to your Portfolio Home</h2>
-  <button id="logoutBtn">Logout</button>
+  <div class="sidebar">
+    <button id="menuToggle">☰</button>
+    <ul>
+      <li><i>🏠</i><span>Home</span></li>
+      <li><i>👤</i><span>Profile</span></li>
+      <li><i>📂</i><span>Projects</span></li>
+      <li><i>✉️</i><span>Mail</span></li>
+      <li><i>📄</i><span>Docs</span></li>
+      <li id="logoutBtn"><i>🚪</i><span>Logout</span></li>
+    </ul>
+  </div>
+  <div class="main">
+    <h2 id="username">Welcome 👋</h2>
+    <p>This is your portfolio home page.</p>
+  </div>
 </body>
 </html>
