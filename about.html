@@ -7,19 +7,21 @@
       <title>About</title>
       <link rel="stylesheet" href="style.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+      <script> (function(){ emailjs.init("MVNLMa6XAnCSIfOnY"); })(); </script>
     </head>
     <body>
 
-<aside class="sidebar-fixed">
+<aside class="sidebar-fixed" id="sidebar">
   <div class="sidebar-inner">
-    <div class="profile-circle">U</div>
+    <div class="profile-circle" id="toggleSidebar">U</div>
     <nav class="sidebar-nav">
-      <a href="home.html" title="Home"><i class="fa fa-home"></i></a>
-      <a href="about.html" title="About"><i class="fa fa-user"></i></a>
-      <a href="projects.html" title="Projects"><i class="fa fa-layer-group"></i></a>
-      <a href="contact.html" title="Contact"><i class="fa fa-envelope"></i></a>
-      <a href="resume.pdf" title="Resume" target="_blank"><i class="fa fa-file-alt"></i></a>
-      <a href="#" title="Logout"><i class="fa fa-power-off"></i></a>
+      <a href="home.html"><i class="fa fa-home"></i><span class="link-text">Home</span></a>
+      <a href="about.html"><i class="fa fa-user"></i><span class="link-text">About</span></a>
+      <a href="projects.html"><i class="fa fa-layer-group"></i><span class="link-text">Projects</span></a>
+      <a href="contact.html"><i class="fa fa-envelope"></i><span class="link-text">Contact</span></a>
+      <a href="resume.pdf" target="_blank"><i class="fa fa-file-alt"></i><span class="link-text">Resume</span></a>
+      <a href="#"><i class="fa fa-power-off"></i><span class="link-text">Logout</span></a>
     </nav>
   </div>
 </aside>
@@ -27,5 +29,6 @@
       <main>
         <section class='card'><h1>About Me</h1><p>I am Utkarsh Chaudhary, passionate about building applications in Web, Cybersecurity, and Game Design. Currently pursuing Diploma + B.Tech.</p><h2>Skills</h2><ul><li>Web Development</li><li>Cybersecurity</li><li>Game Design</li><li>JavaScript, Python, C++</li></ul></section>
       </main>
+      <script src="script.js"></script>
     </body>
     </html>
