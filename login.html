@@ -1,34 +1,28 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login - Utkarsh</title>
-<link rel="stylesheet" href="assets/style.css">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head><body>
-<div id="particles-js-full"></div>
-<div class="login-wrap">
-  <div class="login-card" data-aos="fade-up">
-    <h2>Welcome back</h2>
-    <p class="lead">Sign in to access my portfolio</p>
-    <input id="u" class="input" placeholder="Username" />
-    <input id="p" class="input" placeholder="Password" type="password" />
-    <button id="loginBtn" class="btn-primary">Sign in</button>
-    <div id="err" class="err" aria-live="polite"></div>
-    <p style="margin-top:12px;color:var(--muted);font-size:13px">Demo credentials: <strong>admin</strong> / <strong>1234</strong></p>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Utkarsh Portfolio</title>
+  <style>
+    body { background: #0a0f1c; color: white; font-family: Arial, sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; }
+    .box { background:#111a2f; padding:30px; border-radius:12px; text-align:center; width:300px; }
+    input { width:100%; padding:10px; margin:10px 0; border:none; border-radius:8px; }
+    button { padding:10px; width:100%; border:none; border-radius:8px; background:#1e90ff; color:white; font-size:16px; cursor:pointer; }
+    button:hover { background:#0d6efd; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" />
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    <p style="font-size:12px; color:gray;">Demo: test@demo.com / 123456</p>
   </div>
-</div>
-<script>
-// login logic - demo only
-document.getElementById('loginBtn').addEventListener('click', function(){
-  var u = document.getElementById('u').value.trim();
-  var p = document.getElementById('p').value.trim();
-  var err = document.getElementById('err');
-  if(u==='admin' && p==='1234'){
-    localStorage.setItem('portfolio_token','logged');
-    // small success animation then redirect
-    document.querySelector('.login-card').style.transform='translateY(-10px)'; setTimeout(function(){ window.location.href='home.html'; }, 420);
-  } else {
-    err.textContent='Invalid credentials'; document.querySelector('.login-card').classList.add('shake');
-    setTimeout(function(){ document.querySelector('.login-card').classList.remove('shake'); }, 600);
-  }
-});
-</script>
-</body></html>
+  <script src="firebase-config.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
